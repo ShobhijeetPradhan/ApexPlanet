@@ -1,0 +1,142 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --bg-color: #1a1a1a;       /* Dark Grey Background */
+    --text-color: #f5f5f5;     /* White Text */
+    --accent-color: #9b59b6;   /* Purple Accent */
+    --secondary-color: #3498db;/* Blue Accent */
+    --nav-bg: #2c3e50;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- REQUIREMENT: SKIP TO MAIN CONTENT --- */
+/* Hidden normally, visible when Tab key hits it */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent-color);
+    color: white;
+    padding: 15px;
+    z-index: 1000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0; /* Drops down when focused */
+}
+
+/* --- REQUIREMENT: FLEXBOX NAVIGATION --- */
+nav {
+    background-color: var(--nav-bg);
+    display: flex;             /* FLEX REQUIREMENT */
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;             /* Nested Flex for links */
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+/* --- REQUIREMENT: HOVER EFFECT --- */
+nav a:hover {
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* --- MAIN LAYOUT --- */
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+h2 {
+    border-left: 5px solid var(--accent-color);
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+
+/* --- REQUIREMENT: IMAGE BOX MODEL & HOVER --- */
+/* Applies border, padding, radius + hover transition */
+.styled-img {
+    width: 100%;
+    max-width: 400px;
+    
+    /* BOX MODEL REQUIREMENTS */
+    border: 3px solid #444;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    
+    transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.styled-img:hover {
+    transform: scale(1.03); /* Slight zoom */
+    border-color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* --- REQUIREMENT: GRID LAYOUT --- */
+.gallery-grid {
+    display: grid;             /* GRID REQUIREMENT */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* --- REQUIREMENT: NTH-CHILD SELECTOR --- */
+/* Every EVEN image gets a Blue border instead of Grey */
+.gallery-item:nth-child(even) .styled-img {
+    border-color: var(--secondary-color);
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--nav-bg);
+    margin-top: 50px;
+    border-top: 3px solid var(--accent-color);
+}
